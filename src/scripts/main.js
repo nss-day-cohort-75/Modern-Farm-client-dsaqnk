@@ -9,6 +9,7 @@ import { createSoybean } from "./seeds/soybean.js";
 import { createSunflower } from "./seeds/sunflower.js";
 import { createWheat } from "./seeds/wheat.js";
 import { plantSeeds } from "./tractor.js";
+import { harvestPlants } from "./harvester.js";
 
 const yearlyPlan = createPlan();
 
@@ -38,4 +39,5 @@ let samplePlan = [
 ]
 
 let filledArray = plantSeeds(samplePlan)
-console.log(filledArray)
+let out = harvestPlants(filledArray)
+console.log(out)
