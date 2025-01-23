@@ -10,34 +10,39 @@ import { createSunflower } from "./seeds/sunflower.js";
 import { createWheat } from "./seeds/wheat.js";
 import { plantSeeds } from "./tractor.js";
 import { harvestPlants } from "./harvester.js";
+import { catalog } from "./catalog.js";
+import { renderCatalogHTML } from "./catalog.js";
 
 const yearlyPlan = createPlan();
 
-const asparagusSeed = createAsparagus()
-console.log(asparagusSeed)
+const asparagusSeed = createAsparagus();
+console.log(asparagusSeed);
 
-const cornSeed = createCorn()
-console.log(cornSeed)
+const cornSeed = createCorn();
+console.log(cornSeed);
 
-const potatoSeed = createPotato()
-console.log(potatoSeed)
+const potatoSeed = createPotato();
+console.log(potatoSeed);
 
-const soybeanSeed = createSoybean()
-console.log(soybeanSeed)
+const soybeanSeed = createSoybean();
+console.log(soybeanSeed);
 
-const sunflowerSeed = createSunflower()
-console.log(sunflowerSeed)
+const sunflowerSeed = createSunflower();
+console.log(sunflowerSeed);
 
-const wheatSeed = createWheat()
-console.log(wheatSeed)
+const wheatSeed = createWheat();
+console.log(wheatSeed);
 
 let samplePlan = [
-    ["Potato", "Soybean", "Soybean", "Corn"],
-    ["Wheat", "Corn", "Wheat", "Asparagus"],
-    ["Asparagus", "Wheat", "Soybean", "Corn"],
-    ["Asparagus", "Soybean", "Potato", "Wheat"]
-]
+  ["Potato", "Soybean", "Soybean", "Corn"],
+  ["Wheat", "Corn", "Wheat", "Asparagus"],
+  ["Asparagus", "Wheat", "Soybean", "Corn"],
+  ["Asparagus", "Soybean", "Potato", "Wheat"],
+];
 
-let filledArray = plantSeeds(samplePlan)
-let out = harvestPlants(filledArray)
-console.log(out)
+let filledArray = plantSeeds(samplePlan);
+let out = harvestPlants(filledArray);
+console.log(out);
+
+const catalogHTML = catalog(out);
+renderCatalogHTML(catalogHTML);
