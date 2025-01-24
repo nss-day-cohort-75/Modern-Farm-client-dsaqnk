@@ -12,5 +12,7 @@ export const addPlant = (seedObject) => {
 };
 
 export const usePlants = () => {
-  return structuredClone(storePlants);
+  // return structuredClone(storePlants);
+  let plantsCopy = [...storePlants];
+  return plantsCopy
 };
