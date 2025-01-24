@@ -3,7 +3,7 @@ export const catalog = (harvestPlants) => {
 
   for (const produce of harvestPlants) {
     catalogHTML += `
-        <section class="plant">${produce.name}</section>   
+        <section class="plant">${produce.type}</section>   
        `;
   }
 
@@ -11,6 +11,6 @@ export const catalog = (harvestPlants) => {
 };
 
 export const renderCatalogHTML = (catalogHTML) => {
-  const catalogList = document.querySelector("plant");
-  catalogList.innerHTML = catalogHTML;
+  const catalogList = document.querySelector(".messages");
+  catalogList.innerHTML += catalogHTML;
 };

@@ -1,19 +1,18 @@
-import { usePlants } from "./field.js"
+export const harvestPlants = (plantsArray) => { //this should just be our usePlants function - THERE ARE NO NESTED ARRAYS - THESE ARE ALL OBJECTS
+    const harvestedSeeds = [];
 
-export const harvestPlants = (plantsArray) => {
-    let seedObjects = usePlants()
-    for(let i = 0; i < plantsArray.length; i++){
-        if(!Array.isArray(plantsArray[i])){
-            for(let j = 0; j < plantsArray[i].output; j++){
-                seedObjects.push(plantsArray[i])
-            }            
-        }else{
-            //corn condition
-            for(let j = 0; j < plantsArray[i][0].output; j++){
-                seedObjects.push(plantsArray[i][0])
+    for (const plant of plantsArray) {
+        if (plant.type === "Corn") {
+            const halfOutput = plant.output / 2;
+            for (let i = 0; i < halfOutput; i++) {
+                harvestedSeeds.push({ type: "Corn", height: plant.height, output: plant.output });
+            }
+        } else {
+            for (let i = 0; i < plant.output; i++) {
+                harvestedSeeds.push({ type: plant.type, height: plant.height, output: plant.output });
             }
         }
     }
 
-    return seedObjects
-}
+    return harvestedSeeds; //array of seed objects
+};

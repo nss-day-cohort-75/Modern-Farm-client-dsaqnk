@@ -1,4 +1,4 @@
-import { usePlants } from "./field.js"
+import { addPlant, usePlants } from "./field.js"
 import { createAsparagus } from "./seeds/asparagus.js"
 import { createCorn } from "./seeds/corn.js"
 import { createPotato } from "./seeds/potato.js"
@@ -7,29 +7,28 @@ import { createSunflower } from "./seeds/sunflower.js"
 import { createWheat } from "./seeds/wheat.js"
 
 export const plantSeeds = (plantPlan) => {
-    let storePlantsCopy = usePlants() //empty array
-    for (let crop of plantPlan) {
-        for (let item of crop) {
+    for (let row of plantPlan) { // three rows of six (all arrays)
+        for (let item of row) {
             if (item === "Asparagus") {
-                let asp = createAsparagus()
-                storePlantsCopy.push(asp)
+                const seed = createAsparagus() // if the string is asparagus, it'll create an asparagus object
+                addPlant(seed); //then we add object to plants array (storePlants)
             } else if (item === "Corn") {
-                let corn = createCorn()
-                storePlantsCopy.push(corn)
+                const seed = createCorn()
+                addPlant(seed);
             } else if (item === "Potato") {
-                let pot = createPotato()
-                storePlantsCopy.push(pot)
+                const seed = createPotato()
+                addPlant(seed);
             } else if (item === "Soybean") {
-                let soy = createSoybean()
-                storePlantsCopy.push(soy)
+                const seed = createSoybean()
+                addPlant(seed);
             } else if (item === "Sunflower") {
-                let sun = createSunflower()
-                storePlantsCopy.push(sun)
+                const seed = createSunflower()
+                addPlant(seed);
             } else {
-                let wheat = createWheat()
-                storePlantsCopy.push(wheat)
+                const seed = createWheat()
+                addPlant(seed);
             }
         }
     }
-    return storePlantsCopy
+    return usePlants() // i.e., return our array of plant objects
 }
